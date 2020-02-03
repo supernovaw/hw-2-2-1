@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 	private static final String NOTE_KEY = "note_text";
@@ -41,5 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
 	private void save() {
 		noteSP.edit().putString(NOTE_KEY, editText.getText().toString()).apply();
+		Toast.makeText(this, R.string.saved_toast, Toast.LENGTH_SHORT).show();
 	}
 }
