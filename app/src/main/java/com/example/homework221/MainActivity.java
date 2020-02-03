@@ -1,0 +1,45 @@
+package com.example.homework221;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+	private static final String NOTE_KEY = "note_text";
+
+	private EditText editText;
+	private Button clearButton;
+	private Button saveButton;
+
+	private SharedPreferences noteSP;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		initView();
+		noteSP = getPreferences(MODE_PRIVATE);
+
+		clearButton.setOnClickListener(v -> clear());
+		saveButton.setOnClickListener(v -> save());
+		if (noteSP.contains(NOTE_KEY))
+			editText.setText(noteSP.getString(NOTE_KEY, null));
+	}
+
+	private void initView() {
+		editText = findViewById(R.id.editText);
+		clearButton = findViewById(R.id.clearButton);
+		saveButton = findViewById(R.id.saveButton);
+	}
+
+	private void clear() {
+		editText.setText(null);
+	}
+
+	private void save() {
+		noteSP.edit().putString(NOTE_KEY, editText.getText().toString()).apply();
+	}
+}
