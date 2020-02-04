@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Homework 2.2.1</string>
+    <string name="type_note">Your note text</string>
+    <string name="clear_button">Clear</string>
+    <string name="save_button">Save</string>
     <string name="saved_toast">Saved your note</string>
 </resources>
